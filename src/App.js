@@ -12,6 +12,11 @@ import {
 import './App.css';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import { saveToLocalStorage } from './localStorage';
+
+store.subscribe(
+  _ => saveToLocalStorage(store.getState())
+)
 
 class App extends Component {
   render() {

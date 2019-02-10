@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 import TextField from '@material-ui/core/TextField';
 
+import { Link } from 'react-router-dom'
+
 import MomentUtils from '@date-io/moment';
 import { MuiPickersUtilsProvider } from 'material-ui-pickers';
 import { TimePicker } from 'material-ui-pickers';
@@ -29,7 +31,19 @@ const styles = theme => ({
 });
 
 const LoginForm = props => {
-  const { classes } = props
+  const { classes, onChange, onDateChange, onTimeChange } = props
+
+  const {
+    name,
+    roadway,
+    segment,
+    subsegment,
+    post,
+    address,
+    date,
+    startTime,
+    endTime
+  } = props.loginForm
   
   return (
     <div className={classes.margin}>
@@ -39,6 +53,9 @@ const LoginForm = props => {
         label="Nome"
         margin="normal"
         fullWidth
+        name="name"
+        value={name}
+        onChange={onChange}
       />
 
       <TextField
@@ -46,6 +63,9 @@ const LoginForm = props => {
         label="Rodovia"
         margin="normal"
         fullWidth
+        name="roadway"
+        value={roadway}
+        onChange={onChange}
       />
 
       <TextField
@@ -53,6 +73,9 @@ const LoginForm = props => {
         label="Trecho"
         margin="normal"
         fullWidth
+        name="segment"
+        value={segment}
+        onChange={onChange}
       />
 
       <TextField
@@ -60,6 +83,9 @@ const LoginForm = props => {
         label="SubTrecho"
         margin="normal"
         fullWidth
+        name="subsegment"
+        value={subsegment}
+        onChange={onChange}
       />
 
       <TextField
@@ -67,6 +93,9 @@ const LoginForm = props => {
         label="Posto"
         margin="normal"
         fullWidth
+        name="post"
+        value={post}
+        onChange={onChange}
       />
 
       <TextField
@@ -74,6 +103,9 @@ const LoginForm = props => {
         label="Localização"
         margin="normal"
         fullWidth
+        name="address"
+        value={address}
+        onChange={onChange}
       />
 
       <MuiPickersUtilsProvider utils={MomentUtils}>
@@ -81,26 +113,37 @@ const LoginForm = props => {
           margin="normal"
           label="Data"
           fullWidth
+          name="date"
+          value={date}
+          onChange={onDateChange('date')}
         />
 
         <TimePicker 
           margin="normal"
           label="Hora Inicial"
           fullWidth
+          name="startTime"
+          value={startTime}
+          onChange={onTimeChange('startTime')}
         />
 
         <TimePicker 
           margin="normal"
           label="Hora Final"
           fullWidth
+          name="endTime"
+          value={endTime}
+          onChange={onTimeChange('endTime')}
         />
       </MuiPickersUtilsProvider>
 
-      <Button variant="contained" color="primary" className={classes.button} fullWidth>
-        SALVAR
-        {/* This Button uses a Font Icon, see the installation instructions in the docs. */}
-        <Icon className={classes.rightIcon}>send</Icon>
-      </Button>
+      <Link to="/dashboard">
+        <Button variant="contained" color="primary" className={classes.button} fullWidth>
+          SALVAR
+          {/* This Button uses a Font Icon, see the installation instructions in the docs. */}
+          <Icon className={classes.rightIcon}>send</Icon>
+        </Button>
+      </Link>
         
     </div>
   )
@@ -108,6 +151,7 @@ const LoginForm = props => {
 
 LoginForm.propTypes = {
   classes: PropTypes.object,
+  onChange: PropTypes.func
 }
 
 export default withStyles(styles)(LoginForm)

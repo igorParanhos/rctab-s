@@ -7,8 +7,10 @@ import loginForm from './containers/loginForm/LoginForm.reducers'
 import tabForm from './containers/tabForm/TabForm.reducers'
 import NavigationTabs from './containers/navigationTabs/NavigationTabs.actions'
 
+import { getStateFromLocalStorage } from './localStorage'
+
 const reducers = combineReducers({
-  // loginForm,
+  loginForm,
   tabForm,
   // NavigationTabs,
 })
@@ -27,6 +29,7 @@ window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 
 const enhancer = composeEnhancers(applyMiddleware(...middleware));
 
-const store = createStore(reducers, {}, enhancer);
+const con = a => {console.log(a); return a}
+const store = createStore(reducers, con(getStateFromLocalStorage()), enhancer);
 
 export default store;

@@ -22,7 +22,7 @@ const styles = theme => ({
     padding: theme.spacing.unit / 3
   }
 });
-
+const con = e => {console.log(e); return e}
 const TabForm = props => {
   const { classes } = props;
 
@@ -37,7 +37,7 @@ const TabForm = props => {
               aria-label="Vehicle Type"
               name="vehicle-type"
               className={classes.group}
-              value={props.selectedvehicleType}
+              value={props.selectedVehicleType}
               onChange={props.selectVehicleType}
             >
             
@@ -56,7 +56,7 @@ const TabForm = props => {
 
               {
                 (props.vehicles[props.selectedVehicleType] || []).map(
-                  category => <>
+                  category => <React.Fragment key={category.title}>
                     <Typography align="center" variant="caption" key={category.title}>{category.title}</Typography>
 
                     <Grid container>
@@ -64,14 +64,14 @@ const TabForm = props => {
                         category.types.map(
                           (vehicle, i, all) => (
                             <Grid item xs={vehicle.name.length > 8 ? 12 : all.length === 1 ? 12 : all.length === 2 ? 6 : 6} className={classes.vehicleGridItem} key={vehicle.code} >
-                              <Button fullWidth variant="outlined" className={classes.button} onClick={_ => props.saveRegister(vehicle.code)}> {vehicle.name} </Button>
+                              <Button fullWidth variant="outlined" className={classes.button} onClick={_ => props.saveRegister(vehicle.name, vehicle.code)}> {vehicle.name} </Button>
                             </Grid>
                           )
                         )
                       }
                     </Grid>
 
-                  </>
+                  </React.Fragment>
                 )
               }
             

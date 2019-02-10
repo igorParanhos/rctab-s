@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { withRouter } from 'react-router-dom'
+
 import { withStyles } from '@material-ui/core/styles';
 
 import Paper from '@material-ui/core/Paper';
@@ -20,6 +22,13 @@ const styles = {
 const NavigationTabs = props => {
   const { classes, value } = props;
 
+  const paths = [
+    '/dashboard',
+    '/saved-items',
+  ]
+
+  const navigate = index => _ => props.history.push(paths[index])
+
   return (
     <Paper square className={classes.root}>
       <Tabs
@@ -29,8 +38,8 @@ const NavigationTabs = props => {
         indicatorColor="secondary"
         textColor="secondary"
       >
-        <Tab icon={<Create />} label="FORMULÁRIO" />
-        <Tab icon={<Save />} label="DADOS SALVOS" />
+        <Tab icon={<Create />} label="FORMULÁRIO" onClick={navigate(0)} />
+        <Tab icon={<Save />} label="DADOS SALVOS" onClick={navigate(1)} />
       </Tabs>
     </Paper>
   )
@@ -46,5 +55,5 @@ NavigationTabs.defaultProps = {
   value: 0,
 }
 
-export default withStyles(styles)(NavigationTabs)
+export default withStyles(styles)(withRouter(NavigationTabs))
 

@@ -5,7 +5,7 @@ import { combineReducers } from 'redux'
 
 import loginForm from './containers/loginForm/LoginForm.reducers'
 import tabForm from './containers/tabForm/TabForm.reducers'
-import NavigationTabs from './containers/navigationTabs/NavigationTabs.actions'
+// import NavigationTabs from './containers/navigationTabs/NavigationTabs.actions'
 
 import { getStateFromLocalStorage } from './localStorage'
 

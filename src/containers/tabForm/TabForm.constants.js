@@ -6,15 +6,15 @@ export const initialState = {
         types: [
           {
             name: 'Coletivo Urbano',
-            code: 'C'
+            code: 'coletivo urbano'
           },
           {
             name: 'Coletivo Intermunicipal',
-            code: 'CI'
+            code: 'coletivo intermunicipal'
           },
           {
             name: '3C - Tribus',
-            code: 'T'
+            code: '3C-tribus'
           },
           {
             name: '4CB',
@@ -165,3 +165,4 @@ export const initialState = {
 
 export const SELECT_VEHICLE_TYPE = 'SELECT_VEHICLE_TYPE'
 export const SAVE_REGISTER = 'SAVE_REGISTER'
+export const DELETE_REGISTER = 'DELETE_REGISTER'

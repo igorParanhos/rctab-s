@@ -13,6 +13,7 @@ import './App.css';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import { saveToLocalStorage } from './localStorage';
+import SavedItems from './pages/SavedItems';
 
 store.subscribe(
   _ => saveToLocalStorage(store.getState())
@@ -24,9 +25,10 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route exact path="/" component={Login}/>
-            <Route exact path="/login" component={Login}/>
+            <Route exact path="/" component={Dashboard}/>
+            <Route exact path="/register" component={Login}/>
             <Route exact path="/dashboard" component={Dashboard}/>
+            <Route exact path="/saved-items" component={SavedItems}/>
           </Switch>
         </Router>
       </Provider>

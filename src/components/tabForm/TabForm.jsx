@@ -64,7 +64,7 @@ const TabForm = props => {
                         category.types.map(
                           (vehicle, i, all) => (
                             <Grid item xs={vehicle.name.length > 8 ? 12 : all.length === 1 ? 12 : all.length === 2 ? 6 : 6} className={classes.vehicleGridItem} key={vehicle.code} >
-                              <Button fullWidth variant="outlined" className={classes.button}> {vehicle.name} </Button>
+                              <Button fullWidth variant="outlined" className={classes.button} onClick={_ => props.saveRegister(vehicle.code)}> {vehicle.name} </Button>
                             </Grid>
                           )
                         )

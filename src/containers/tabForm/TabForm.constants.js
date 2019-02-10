@@ -159,7 +159,9 @@ export const initialState = {
         ]
       }
     ]
-  }
+  },
+  savedItems: []
 }
 
 export const SELECT_VEHICLE_TYPE = 'SELECT_VEHICLE_TYPE'
+export const SAVE_REGISTER = 'SAVE_REGISTER'

@@ -1,6 +1,6 @@
 import TabForm from '../../components/tabForm/TabForm'
 
-import { selectVehicleType } from './TabForm.actions'
+import { selectVehicleType, saveRegister } from './TabForm.actions'
 
 import { connect } from 'react-redux'
 
@@ -11,6 +11,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   selectVehicleType,
+  saveRegister,
 }
 
 export default connect(
